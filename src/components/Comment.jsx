@@ -8,27 +8,30 @@ export function Comment() {
             <img src="https://github.com/albanogabriel.png" alt="" />
 
             <div className={styles.commentBox}>
-                <header>
-                    <section>
+                <div className={styles.commentContent}>
+                    <header>
                         <div className={styles.authorAndTime}>
                             <strong>Gabriel Albano</strong>
                             <time title="11 de maio às 08:13h" dateTime="2022-05-11 08:13:30">Cerca de 1h atrás</time>
                         </div>
+
                         <button title="Deletar comentário">
-                            <Trash size={20}/>
+                            <Trash size={22}/>
                         </button>
-                        
-                    </section>
+                    </header>
+                    
                     <p>Muito bom Gabriel, parabéns</p>
-                </header>
+                </div>
+                
+                <footer>
+                    <button>
+                        <ThumbsUp />
+                        Aplaudir <span>23</span>
+                    </button>
+                </footer>
             </div>
 
-            <footer>
-               <button>
-                <ThumbsUp />
-                Aplaudir <span>23</span>
-               </button>
-            </footer>
+            
         </div>
     )
 }
