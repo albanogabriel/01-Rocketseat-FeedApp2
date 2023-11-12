@@ -1,6 +1,7 @@
 import { PencilLine } from 'phosphor-react'
 
 import styles from './Sidebar.module.css'
+import { Avatar } from './Avatar'
 
 export function Siderbar() {
     return (
@@ -8,7 +9,9 @@ export function Siderbar() {
             <img className={styles.cover} src="https://images.unsplash.com/photo-1698308246064-e86c57c63782?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
 
             <div className={styles.profile}>
-                <img className={styles.avatar} src="https://github.com/albanogabriel.png" />
+                
+                {/* Por default a propriedade hasBorder, tem como true, então podemos omitir a propriedade */}
+                <Avatar src="https://github.com/albanogabriel.png"/>
 
                 <strong>Gabriel Albano</strong>
                 <span>Front-end Developer</span>
