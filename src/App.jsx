@@ -16,7 +16,11 @@ function App() {
         <Siderbar />
         
         <main>
-          <Post author="Gabriel Albano" content="lorem lorem lorem ipsum " />
+          <Post 
+            author="Gabriel Albano"
+            content="lorem lorem lorem ipsum "
+          />
+          
         </main>
       </div>
     </div>
