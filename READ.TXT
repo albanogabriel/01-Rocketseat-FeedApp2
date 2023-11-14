@@ -1,1 +1,3 @@
 Phosphor icon - npm i phosphor-react
+
+date fns - npm i date-fns / manipulação de datas

@@ -126,5 +126,6 @@ or display block nas divs
 }
 
 .commentList {
-    margin-top: 2rem
+    margin-top: 2rem;
+    line-height: 1.6;
 }

@@ -1,58 +1,35 @@
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 
 import styles from './Post.module.css'
 
-// O que vamos precisar ?
-// author: { avatar_Url: "", name: "", role: "" }
-// publishedAt: Date
-// content: String
+export function Post({ author, publishedAt, content }) {
+    const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+        locale: ptBR
+    })
 
-const posts = [
-    {
-        id: 1,
-        author: {
-            avatarUrl: "https://github.com/albanogabriel.png",
-            name: "Gabriel Albano",
-            role: "SCRUM MASTER / Front-end Developer"
-        },
-        content: [
-            { type: paragraph, content: 'Fala Galera 👏,' },
-            { type: paragraph, content: 'acabei de subir mais um projeto no meu portfia, É um projeto que fiz no NLW Return, evento da Rocket'},
-            { type: link, content: '<a href="">jane.design/doctorcare</a>' }
-        ],
-        publishedAt: new Date('2022-05-03 20:00:00'),
-    },
-    {
-        id: 2,
-        author: {
-            avatarUrl: "https://github.com/diego3g.png",
-            name: "Diego Fernandes",
-            role: "CTO @rocketseat"
-        },
-        content: [
-            { type: paragraph, content: 'Fala Galera 👏,' },
-            { type: paragraph, content: 'acabei de subir mais um projeto no meu portfia, É um projeto que fiz no NLW Return, evento da Rocket'},
-            { type: link, content: '<a href="">jane.design/doctorcare</a>' }
-        ],
-        publishedAt: new Date('2022-05-03 20:00:00'),
-    }
-]
-
-export function Post() {
+    const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
+    
     return (
-        <div>
-            <article className={styles.post}>
+        <article className={styles.post}>
                 <header>
                     <div className={styles.author}>
-                       <Avatar src="https://github.com/albanogabriel.png"/>
+                        <Avatar src={author.avatarUrl}/>
                         <div className={styles.authorInfo}>
-                            <strong>Gabriel Albano</strong>
-                            <span>Front-end Developer</span>
+                            <strong>{author.name}</strong>
+                            <span>{author.role}</span>
                         </div>
                     </div>
 
-                    <time title="11 de maio às 08:13h" dateTime="2022-05-11 08:13:30">Publicado há 1h</time>
+                    <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
+                        {publishedDateRelativeToNow}
+                    </time>
                 </header>
 
                 <div className={styles.content}>
@@ -69,12 +46,17 @@ export function Post() {
                 </form>
 
                 <div className={styles.commentList}>
+                    {content.map(item => {
+                        if (item.type === 'paragraph') {
+                            return <p>{item.content}</p>
+                        } else if (item.type === 'link') {
+                            return <p><a href="">{item.content}</a></p>
+                        }
+                    })}
                     <Comment />
                     <Comment />
                     <Comment />
-                </div>
-                               
+                </div>                          
             </article>
-        </div>
     )
 }
