@@ -46,8 +46,6 @@ const posts = [
   }
 ]
 
-console.log(posts)
-
 function App() {
   return (
     <div>
