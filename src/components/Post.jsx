@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -53,10 +52,10 @@ export function Post({ author, publishedAt, content }) {
       <div className={styles.content}>
         {content.map((item) => {
           if (item.type === 'paragraph') {
-            return <p>{item.content}</p>
+            return <p key={item.content}>{item.content}</p>
           } else if (item.type === 'link') {
             return (
-              <p>
+              <p key={item.content}>
                 <a href="">{item.content}</a>
               </p>
             )
@@ -66,10 +65,10 @@ export function Post({ author, publishedAt, content }) {
         <form onSubmit={handleAddComment} className={styles.commentForm}>
           <strong>Deixa seu feedback</strong>
           <textarea
+            onChange={handleNewCommentChange}
             name="comment"
             placeholder="deixe um comentário"
             value={newCommentText}
-            onChange={handleNewCommentChange}
           />
           <footer>
             <button type="submit">Publicar</button>
@@ -80,7 +79,7 @@ export function Post({ author, publishedAt, content }) {
           {comments.map((comment) => {
             //o comment é = o valor no array = 'Post muito bacana, hein!'
             // 'Post muito bacana, hein!' é passado como props
-            return <Comment content={comment} />
+            return <Comment key={comment} content={comment} />
           })}
         </div>
       </div>

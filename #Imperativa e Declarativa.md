@@ -9,9 +9,6 @@ O que deve ser feito(passo-a-passo)
 3. Colocar a massa numa forma
 4. Colocar a forma com a massa dentro do forno
 
-
-
-
 # Programação Declarativa
 
 Quais são as condições para eu ter o resultado final.
