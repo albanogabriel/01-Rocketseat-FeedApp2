@@ -33,6 +33,18 @@ export function Post({ author, publishedAt, content }) {
     setNewCommentText(event.target.value)
   }
 
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      // retornar true -> vai manter na lista
+      // retornar false -> vai remover da lista
+      return comment === !commentToDelete
+      // traduzindo -> retornar na lista apenas os comentários que forem idênticos(===) (!)diferentes de commentToDelete
+    })
+
+    //imutabilidade
+    setComments(commentsWithoutDeletedOne)
+  }
+
   return (
     <article className={styles.post}>
       <header>
@@ -79,7 +91,7 @@ export function Post({ author, publishedAt, content }) {
           {comments.map((comment) => {
             //o comment é = o valor no array = 'Post muito bacana, hein!'
             // 'Post muito bacana, hein!' é passado como props
-            return <Comment key={comment} content={comment} />
+            return <Comment key={comment} content={comment} onDeleteComment={deleteComment} />
           })}
         </div>
       </div>
