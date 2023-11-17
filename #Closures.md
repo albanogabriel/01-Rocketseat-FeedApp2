@@ -57,3 +57,5 @@ function Comment() {
   }
 }
 ```
+
+Sempre que vocÊ for atualizar uma informação e essa info depende do valor que ela tinha anteriormente, ou seja, depende dela mesmo: É legal utilizar esse padrão de chamar uma função dentro da função que altera o estado
