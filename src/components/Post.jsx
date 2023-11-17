@@ -29,21 +29,22 @@ export function Post({ author, publishedAt, content }) {
   }
 
   function handleNewCommentChange() {
-    //se eu quero adicionar esse valor ao meu estado:
+    event.target.setCustomValidity('')
     setNewCommentText(event.target.value)
   }
 
-  function deleteComment(commentToDelete) {
-    const commentsWithoutDeletedOne = comments.filter((comment) => {
-      // retornar true -> vai manter na lista
-      // retornar false -> vai remover da lista
-      return comment === !commentToDelete
-      // traduzindo -> retornar na lista apenas os comentários que forem idênticos(===) (!)diferentes de commentToDelete
-    })
+  function handleNewCommentInvalid() {
+    event.target.setCustomValidity('Esse campo é obrigatório!')
+  }
 
-    //imutabilidade
+  function deleteComment(parameterOfCommentProps) {
+    const commentsWithoutDeletedOne = comments.filter((commentItem) => {
+      return commentItem === !parameterOfCommentProps
+    })
     setComments(commentsWithoutDeletedOne)
   }
+
+  const isNewCommentInputEmpty = newCommentText.length === 0
 
   return (
     <article className={styles.post}>
@@ -81,16 +82,19 @@ export function Post({ author, publishedAt, content }) {
             name="comment"
             placeholder="deixe um comentário"
             value={newCommentText}
+            onInvalid={handleNewCommentInvalid}
+            required
           />
           <footer>
-            <button type="submit">Publicar</button>
+            <button type="submit" disabled={isNewCommentInputEmpty}>
+              Publicar
+            </button>
           </footer>
         </form>
 
         <div className={styles.commentList}>
           {comments.map((comment) => {
-            //o comment é = o valor no array = 'Post muito bacana, hein!'
-            // 'Post muito bacana, hein!' é passado como props
+            //map itera e retorna cada item do array -> comment = comments[i.length] + return
             return <Comment key={comment} content={comment} onDeleteComment={deleteComment} />
           })}
         </div>
