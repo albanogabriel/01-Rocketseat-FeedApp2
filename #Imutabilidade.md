@@ -10,3 +10,5 @@ Nós criamos um novo valor, para a variável comentários.
 
 -> A imutabilidade nos permite ser mais performático
 -> Ciar um novo valor na memória é mais rápido para o react fazer a comparação se aquilo mudou ou não, do que eu alterar um valor que já está na memória... então o react irá monitor o valor no memória para ver se mudou ou se não mudou, qual erao valor antigo, ql é o novo...
+
+-> No React, nunca alteramos uma informação, sempre criamos uma nova informação e salvando aquilo dentro de um estado, é assim que faz a atualização de valores dentro de um estado
