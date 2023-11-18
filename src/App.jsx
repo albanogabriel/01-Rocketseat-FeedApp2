@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { Header } from './components/Header'
 
 import styles from './App.module.css'
@@ -6,14 +5,6 @@ import styles from './App.module.css'
 import './global.css'
 import { Siderbar } from './components/Sidebar'
 import { Post } from './components/Post'
-
-// O que vamos precisar ?
-// author: { avatar_Url: "", name: "", role: "" }
-// publishedAt: Date
-// content: String
-
-//iteração - repetir alguma coisa(estrutura de repetição)
-//iterar sobre o array - vou iterar o array e para cada posição do array, vou fazer alguma coisa
 
 const posts = [
   {
